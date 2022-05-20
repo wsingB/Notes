@@ -45,3 +45,12 @@
   (if (null? items)
       nil
       (cons (proc (car items)) (map proc (cdr items)))))
+
+;; no war !!!
+;; receive common
+
+(define (foreach proc items)
+  (if (null? items)
+      #t
+      (and (proc (car items))
+           (foreach proc (cdr items)))))
