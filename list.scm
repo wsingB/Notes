@@ -1,6 +1,6 @@
 ;; list operands sets
 
-
+;; get position elements
 (define (list-ref items n)
   (if (= n 0)
       (car items)
@@ -16,3 +16,18 @@
   (if (null? items)
       count
       (length-iter (cdr items) (+ count 1))))
+
+(define (append list-1 list-2)
+  (if (null? list-1)
+      list-2
+      (cons (car list-1) (append (cdr list-1) list-2))))
+
+;; processing L1: 1 2 3 4 L2: 5 6 7 8
+;; cons 1 cons 2 cons 3 cons 4 cons L2
+
+(define (reverse items)
+  (define (iter items reverse-items)
+    (if (null? items)
+        reverse-items
+        (reverse (cdr items) (cons (car items) reverse-items))))
+  (iter items nil))
