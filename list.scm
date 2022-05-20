@@ -36,3 +36,12 @@
   (if (null? (cdr items))
       items
       (last-pair (cdr items))))
+
+;;  more arguments
+
+;; (define (f x y .z) <body>)
+(define nil '())
+(define (map proc items)
+  (if (null? items)
+      nil
+      (cons (proc (car items)) (map proc (cdr items)))))
