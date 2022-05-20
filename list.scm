@@ -31,3 +31,8 @@
         reverse-items
         (reverse (cdr items) (cons (car items) reverse-items))))
   (iter items nil))
+
+(define (last-pair items)
+  (if (null? (cdr items))
+      items
+      (last-pair (cdr items))))
