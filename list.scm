@@ -54,3 +54,27 @@
       #t
       (and (proc (car items))
            (foreach proc (cdr items)))))
+
+;; (define machine (lambda(f) x))
+;; (f(x) x)
+;; (f(f(x)))
+
+(define (count-leaves x)
+  (cond ((null? x) 0)
+        ((not (pair? x)) 1)
+        (else
+         (+ (count-leaves (car x))
+            (count-leaves (cdr x))))))
+
+
+(define (deep-reverse items)
+  (define (iter tree new-tree)
+    (if (null? items)
+        new-tree
+        (let ((first (car tree)))
+          (iter (cdr tree)
+                (cons (if (not (pair? first))
+                          first
+                          (deep-reverse first))
+                      new-tree)))))
+  (iter items nil))
