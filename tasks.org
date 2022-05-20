@@ -1,0 +1,52 @@
+** GDT TABLE
+#+TAGS:@work(w) @study(s)
+*** TODO [#A] Major  <2022-05-20 Fri>--<2022-06-10 Fri>                                                           :study:
+    SCHEDULED: <2022-05-20 Fri 08:00> DEADLINE: <2022-06-10 Fri +21d>
+    - [ ] EDA & C51 [0/4]<2022-05-20 Fri>--<2022-05-30 Mon>
+      - [ ] Schematic diagram
+      - [ ] PCB Designer
+      - [ ] C51 special type
+      - [ ] Segment and bit select
+    - [ ] Database Designer (JAVA) [0/3]<2022-05-20 Fri>--<2022-06-02 Thu>
+      - [ ] html, css
+      - [ ] MYSQL
+      - [ ] JDBC
+    - [ ] Computer Network [0/4]<2022-05-20 Fri>--<2022-06-08 Wed>
+      - [ ] Application layer
+      - [ ] Translate layer
+      - [ ] Network layer
+      - [ ] data link layer
+    - [ ] English
+      - [ ] CET 4
+      - [ ] Listening
+*** TODO Computer Knowledge                                                     :study:
+    DEADLINE: <2022-12-31 Sat 22:00> SCHEDULED: <2022-05-21 Sat>
+    :LOGBOOK:
+    CLOCK: [2022-05-19 Thu 11:23]
+    :END:
+    - [ ] S.I.C.P [0/3]<2022-05-20 Fri>--<2022-06-23 Thu>
+      - [ ] Video
+      - [ ] Book
+            [[https://mitpress.mit.edu/sites/default/files/sicp/full-text/bppk/book-Z-H-1.html][SICP BOOK LINK ADDRESS]]
+      - [ ] EMACS
+    - [ ] RUST [0/4]
+      - [ ] rust in chentian
+      - [ ] rust games
+      - [ ] c++ primer
+      - [ ] python
+    - [ ] Algorithm [0/3]
+      - [ ] Solutions
+      - [ ] Intro to Algorithms
+      - [ ] leetcode 
+            [[https:leetcode.com][leetcode]]
+    - [ ] unix/linux [0/4]
+      - [ ] Operation System
+      - [ ] unix programming
+      - [ ] Complie principle
+      - [ ] database
+    - [ ] regex git
+    - [ ] MATH [0/4]
+      - [ ] linear algebra
+      - [ ] calculus and differential equation
+      - [ ] Discrete mathematics
+      - [ ] probability theory
