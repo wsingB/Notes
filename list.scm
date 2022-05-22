@@ -108,5 +108,3 @@
           (accumulate op initial (cdr sequence)))))
 
 
-
-;;
