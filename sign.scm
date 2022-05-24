@@ -20,3 +20,4 @@
 (define (variable? e)
   (not (eq? 'e)))
 
+(define (map key value))
