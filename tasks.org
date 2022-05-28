@@ -5,7 +5,7 @@
     - [ ] EDA & C51 [0/4]<2022-05-20 Fri>--<2022-05-30 Mon>
       - [ ] Schematic diagram
       - [ ] PCB Designer
-      - [ ] C51 special type
+      - [ ] C51 special typeal
       - [ ] Segment and bit select
     - [ ] Database Designer (JAVA) [0/3]<2022-05-20 Fri>--<2022-06-02 Thu>
       - [ ] html, css
