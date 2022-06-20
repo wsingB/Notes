@@ -1,0 +1,154 @@
+#+LATEX_COMPILER: xelatex
+#+LATEX_HEADER: \usepackage{xeCJK}
+#+OPTIpONS:prop:t
+#+title: 数据库应用开发复习笔记
+#+author: werbinich(wyt)
+#+email: lee.wyt.lly@gamil.com
+*** Part I
++ *HTML/CSS/JS*
+  + HTML标记
+    + form     表单标记
+    + table    表格标记
+    + br       换行标记
+    + td       列标记
+    + tr       行标记
+    + a        超链接标记
+    + link     链入资源标记
+    + div      分块标记
+    + hidden   隐藏标记
+    + img      图片标记
+    + password 密码标记
+    + herf     指定资源URL地址
+    + src      图片属性
+  + HTML标签值
+    - 提交按钮属性值      _submit_
+    - 单(多)选按钮选中    _checked_
+    - upload file       _file_
+    - 下拉列表option     _selected_
+    - 提交方式决定权      _method_
+    - 文本输入           _text_
+    - 提交给             _action_
+    - 当使用select时会   _onChange_
+#+begin_src html
+<a herf="right.html" target="_blank">news</a>
+#+end_src
+  + CSS(层叠样式表)构成 _选择器_, _属性_, _属性值_
+    + 选择器{标记选择器, 类别选择器, id选择器}
+    + 类别选择器 .开始
+    + jQuery   $开始
+    + 右移5px 下移 10px
+     #+begin_src css
+p {background-position:5px -10px;}
+     #+end_src
+  + /=selector{attribute:value;...}=/
+  + js在执行数字和字符串相加时会将数字转换为字符串并且拼接在一起
+  + alert方法包含在window对象中
+  + jquery      的筛选分为 {查找, 串联, 过滤}
+  + setInterval 提供定时调用功能
+  + OnClick     单击按钮时处理函数
+  + parseInt    字符串转数值函数
+*** Part II
++ *SQL*
+  + 安装sql时会默认创建一些数据库{mysql, sys, information_schema}
+  + 交叉连接
+    + 执行后对于参与交叉链接后的字段和
+  + DBMS(DataBase Manage System) 是数据库管理系统的缩写
+  + 四种连接
+    + 左连接 : 返回左表中与右表连接字段相等的的记录
+    + 右连接 : 返回右表中与左表连接字段相等的的记录
+    + 内连接 : 返回右表与左表连接字段相等的的记录
+    + 全外连接: 返回左右所有的记录和左右相等的数据
+  + select * frome table;表示选取所有所有字段
+  + 属于DML(数据操纵语言)
+    + insert  插入 (insert into table(field,...)values(v1,...)(v2...)
+    + update  更新 (update table set field = new-value,... where cond)
+    + delete  删除 (delete table's half alias from t1 tas1,...where link-cond and filter-cond)
+  + 数据定义语言DDL
+    + create  创建 (create databease if not exists name character set codeset;)
+    + drop    删除 (drop  databease  if exists name;)
+    + alter   修改 (alter table table-name change/modify column old-column new-column new-type ...)
+  + select   查询 (slelect field from name (where cond))
+  + order by 排序  (select field from tn where order by ...)
+  + types    (int date(timestamp date) text character iamge real(float 精度6-7bit)))
+  + 主键     唯一且非空
+  + ON      设置从表连接的条件
+  + project 投影
+  + default port 3306
+  + net start mysql 启动mysql服务
+  + net stop  mysql 停止mysql服务
+  + 域:属性的却只范围
+  + Create PROCEDURE 存储过程PROCESS
+  + 概念模式 表述数据的整体逻辑结构
+  + \'      转义'
+  + E-R     实体-关系 概念模型 实体-属性-联系
+  + LIMIT offset count  limit 5 10 表示6-15 通过它实现分页
+  + where between start and end.
+  + 几种模型
+    + n:1
+    + n:m
+    + 1:n
+  + DECIMAL(length, accuracy)
+  + 几个函数
+    + avg     平均
+    + sum     求和
+    + maxmin  最值
+    + concat  字符串链接函数
+  + having    连接查询和聚合函数
+  + user table 保存用户名和密码
+  + 子查询
+    + where 子查询
+    + from  子查询
+  + 关系别名:字段 元组别名:记录
+  + DISTINCT 去除重复记录
+  + 外连接分左右外连接
+  + 建立外键约束会影响关联表的插入操作
+  + union 联合查询
+  + as    设置别名 可以用空格代替
+  + GROUP_CONCAT 聚合函数我们可以将分组后的字段值连接成为字符串
+  + NULL  空值 在不匹配时会被设置
+  + E-R 关系图中
+    + 实体对应数据表
+    + 属性对应字段
+  + ASC  默认排序关键字
+  +
+#+begin_src sql
+create table table-name(
+    col type(int) primary key auto_increment,
+    col2 type not null,
+    col3 type unique,
+)
+#+end_src
+  + 几种约束
+    + todo
+*** Part III
++ JDBC(JAVA数据库连接) (package java.sql)
+  + step 00: create a Connection class.
+  + step 01: create a PreparedStatement save sql.
+  + step 11: execute sql. call preparedstatement.executeQuery()
+  + step 10: release connection.
++ ResultSet
+  + next   judge is have next record
++ *还没有完成,完整版应该要在凌晨了.还没太学懂!不好意思哈!*
+*** Part IV
++ *Servlet and Filter*
+  + 运行在Web服务器上的程序,可动态的收集数据是中间件,降低程序复杂性.
+  + 生命周期:
+    + 初始化     init()    只调用一次 每个请求都会创建一个新的线程
+    + 处理请求   service() 发送响应给客户端在适当的时候调用doGet,doPost,doPut,doDelete
+    + 销毁      destroy() 生命周期结束时候调用
+  + 需要在web.xml文件中添加
+#+begin_src xml
+<web-app>
+    <servlet>
+            <servlet-name>name</servlet-name>
+            <servlet-class>name</servlet-class>
+    </servlet>
+    <servlet-mapping>
+            <servlet-name>name</servlet-name>
+            <url-pattern>name</url-pattern>
+    </servlet-mapping>
+</web-app>
+#+end_src
++ 这部分有点难!!! 要理解服务器处理请求的过程,以及产生的响应,过滤器是为了实现动态拦截和响应.
++ 错误和异常处理 error-page ..内置对象... cookie 会话追踪.
++
