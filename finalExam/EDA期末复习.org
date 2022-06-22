@@ -1,0 +1,139 @@
+#+LATEX_COMPILER: xelatex
+#+LATEX_HEADER: \usepackage{xeCJK}
+#+OPTIpONS:prop:t
+#+tittle:EDA复习笔记
+#+author:werbinich
+*** EDA(电子线路设计自动化)[fn::下划线是我补充可能的考点]
+**** 电子设计流程
+1) 项目立项
+2) 原理图设计
+3) PCB建库[fn::印制电路板]
+4) PCB设计
+5) 生产文件输出
+6) PCB文件加工
+**** Altium Designer 常见文件后缀名
++ 工程文件: *PrjPcb*
++ 元件库文件: *SchLib*
++ 原理图文件: *SchDoc*
++ PCB库文件: *PcbLib*
++ 网络表文件: *NET*
++ PCB文件: *PcbDoc*
+**** 编辑元件属性
++ _绘制元件库_
+  + 多个部分的元件需要add为元件添加新的部分
+  + 需要给model添加Footprint等描述
+  + 放管脚时注意有x的朝外
++ _Designator:元件位号,元件的唯一表示_
+  + U?(IC),R?(电阻),C?(电容),J?(接口)[fn::R:电阻,C:电容,RN:排阻,EC:电解电容,U:芯片,X:晶振,D:二极管,Q:三极管,J:跳线,LED:发光二极管,ZD:整流二极管,FB:磁珠]
++ 元件的移动
+  + 选择
+    + 单选: 鼠标左键
+    + 多选: shift+鼠标左键
+  + 旋转
+    + 选中后按空格逆时针旋转
+    + Shift+空格顺时针旋转
+    + X or Y 根据X或Y进行镜像
+**** 原理图绘制
++ _设计方式_
+  + 自顶向下
+    + 将大模块逐步分解为小模块去设计
+  + 自底向上
+    + 从底层开始设计逐步扩大最后完成
++ 导线
+  + 命令 Place + Wire
+  + 功能:
+    + 连接电气元件
+    + 具有电气特性
+  + 接地和电源
+    + 点击图标或者Place + Power Port
+    + 按住Tab可以配置属性
++ 网络标号
+  + 表示多个具有电气意义的导线, 降低原理图复杂度
+  + Place + Net Label
+  + 同一个网络标号需要完全一致
+  + TAA (tools + annotation + annotation schematics)
+    + 可以对一个原理图的标号进行编辑和选择
++ _页连接符_
+  + 由于网络符号无法在多张图纸中连接,所以需要使用Port[fn::端口]进行连接
+  + Place Port
+  + 其他作了解[fn::Sheet Entry, Off Sheet Connector, Power Port]
++ _总线_
+  + Place + Bus
+  + 表示具有相同电气意义的一组导线
+  + 总线以总线分支引出各条分导线，以网络标号做区分
+    + 总线分支 Place + Bus Entry(PU)
++ No ERC
+  + x图标
+  + 可以忽略该管脚的错误，双击或者TAB可以修改检查属性
++ 辅助线
+  + 无电气意义, 用于区分电路的各个部分
+  + Place + Line(PDL)
+**** 原理图编译
++ Project + compile PCB Project xxx.PrjPcb
++ BOM
+  + 物料清单表
+  + Report + Bill of Materials(RI)
+**** PCB封装创建
++ 向导法创建
+  + 通过对封装类型模板的选择比如DIP对称的封装 [fn::穿孔,双列]
+  + 根据芯片手册填写焊盘参数,一般要比数据手册大一点, 内径，外径
+  + 焊盘间距参数:纵向e-2.54mm,横向E1-7.62mm
+  + finish
+**** 手工绘制PCB封装
++ 焊盘
+  + Place + Pad
+  + 设置形状 [fn::表贴焊盘需要放在Top layer, 通孔放在Multi-Layer]
++ 过孔
+  + Place + via
++ 放置敷铜
+  + Place polygon place
++ 网表
+  + 网络连接和联系的表示
+  + 通过网表连接关系进行PCB的导入
+  + Design + Netlist for Project + Protel生成
++ _固定孔_
+  + 3mm
+  + (5mm,5mm)
+**** PCB布局
++ _设置PCB板子大小_
+  + Q 切换grid(方格)单位 or View + grids + set global snap grids
+  + Place line (Keep out layer 或者 Mechanical layer)需要闭合
+  + Designer + Board shape + define from objects
++ 按照信号走向布局,以每个功能为核心布局
++ PCB类
+  + 同一属性的网络或元件或差分放在一起构成一个类别,比如电源,GND,VCC
+  + 便与管理和编辑
+  + Design + Class 在大类的子类别中使用鼠标右键 add class
++ _PCB 规则设置_
+  + Clearance 安全距离设计 可以选择规则适配范围[fn::不同网络,相同网络,所有网络,不同差分]
+  + Track是走线 Hole是钻孔 TH Pad通孔焊盘Copper 铜皮
+  + enable 启用规则
+  + 不要勾选允许短路和开路
+  + 设置线宽规则
+*** 一些术语的作用
++ 泪滴
+  + 避免电路板收到巨大外力冲撞时导线与焊盘接触点断开,是的更加美观
+  + 保护焊盘避免多次焊接时脱落
+  + 信号传输时平滑阻抗,降低急剧跳变
+  + tools + teardrops
++ 敷铜
+  + 增加载流面接和能力
+  + 减小底线阻抗,抗干扰
+  + 降低压降,提高电源效率
+  + 与地线连接,减少环路面积
+  + 对称敷铜可以对多层板起到平衡作用
++ DRC 检查设计是否满足规则
+  + 电源线与接地线要宽一些
++ 设置相对原点
+  + Edit + Origin + set
++ 尺寸标注
+  + Place + Dimension linear
+  + 便于设计者和生产者获取PCB尺寸以及相关信息
+**** 生产文件输出步骤 Gerber
++ file + fabrication Outputs Gerber
++ _是一个所有电路设计软件都可以生产的模板文件,又叫做光绘文件_
++ 单位:inches
++ 比例:2:4
++ 选择使用的层 Plot Layer used on
++ 丝印层 (GTO[fn::Gerber Top Overlayer]) 做标识
++ GM1(机械标注层1) GKO(禁止布线层)
