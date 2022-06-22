@@ -1,24 +1,27 @@
 #+LATEX_COMPILER: xelatex
 #+LATEX_HEADER: \usepackage{xeCJK}
 #+OPTIpONS:prop:t
-#+tittle:EDA复习笔记
-#+author:werbinich
-*** EDA(电子线路设计自动化)[fn::下划线是我补充可能的考点]
-**** 电子设计流程
+#+tittle: EDA Review Notes
+#+author: werbinich
+*** EDA(电子线路设计自动化)
++ 补充[fn::下划线是我补充可能的考点]
++ AD使用辅助设计电路软件
++ 学习AD可以让我们掌握电路设计流程
+*** 电子设计流程
 1) 项目立项
 2) 原理图设计
 3) PCB建库[fn::印制电路板]
 4) PCB设计
 5) 生产文件输出
 6) PCB文件加工
-**** Altium Designer 常见文件后缀名
+*** Altium Designer 常见文件后缀名
 + 工程文件: *PrjPcb*
 + 元件库文件: *SchLib*
 + 原理图文件: *SchDoc*
 + PCB库文件: *PcbLib*
 + 网络表文件: *NET*
 + PCB文件: *PcbDoc*
-**** 编辑元件属性
+*** 编辑元件属性
 + _绘制元件库_
   + 多个部分的元件需要add为元件添加新的部分
   + 需要给model添加Footprint等描述
@@ -33,7 +36,7 @@
     + 选中后按空格逆时针旋转
     + Shift+空格顺时针旋转
     + X or Y 根据X或Y进行镜像
-**** 原理图绘制
+*** 原理图绘制
 + _设计方式_
   + 自顶向下
     + 将大模块逐步分解为小模块去设计
@@ -68,18 +71,18 @@
 + 辅助线
   + 无电气意义, 用于区分电路的各个部分
   + Place + Line(PDL)
-**** 原理图编译
+*** 原理图编译
 + Project + compile PCB Project xxx.PrjPcb
 + BOM
   + 物料清单表
   + Report + Bill of Materials(RI)
-**** PCB封装创建
+*** PCB封装创建
 + 向导法创建
   + 通过对封装类型模板的选择比如DIP对称的封装 [fn::穿孔,双列]
   + 根据芯片手册填写焊盘参数,一般要比数据手册大一点, 内径，外径
   + 焊盘间距参数:纵向e-2.54mm,横向E1-7.62mm
   + finish
-**** 手工绘制PCB封装
+*** 手工绘制PCB封装
 + 焊盘
   + Place + Pad
   + 设置形状 [fn::表贴焊盘需要放在Top layer, 通孔放在Multi-Layer]
@@ -94,7 +97,7 @@
 + _固定孔_
   + 3mm
   + (5mm,5mm)
-**** PCB布局
+*** PCB布局
 + _设置PCB板子大小_
   + Q 切换grid(方格)单位 or View + grids + set global snap grids
   + Place line (Keep out layer 或者 Mechanical layer)需要闭合
@@ -129,7 +132,7 @@
 + 尺寸标注
   + Place + Dimension linear
   + 便于设计者和生产者获取PCB尺寸以及相关信息
-**** 生产文件输出步骤 Gerber
+*** 生产文件输出步骤 Gerber
 + file + fabrication Outputs Gerber
 + _是一个所有电路设计软件都可以生产的模板文件,又叫做光绘文件_
 + 单位:inches

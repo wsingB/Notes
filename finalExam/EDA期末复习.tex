@@ -1,0 +1,264 @@
+% Created 2022-06-23 四 05:16
+% Intended LaTeX compiler: xelatex
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{xeCJK}
+\author{werbinich}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={werbinich},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)},
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{EDA(电子线路设计自动化)}
+\label{sec:orga6d6d82}
+\begin{itemize}
+\item 补充\footnote{下划线是我补充可能的考点}
+\item AD使用辅助设计电路软件
+\item 学习AD可以让我们掌握电路设计流程
+\end{itemize}
+\section{电子设计流程}
+\label{sec:org5b9dfaf}
+\begin{enumerate}
+\item 项目立项
+\item 原理图设计
+\item PCB建库\footnote{印制电路板}
+\item PCB设计
+\item 生产文件输出
+\item PCB文件加工
+\end{enumerate}
+\section{Altium Designer 常见文件后缀名}
+\label{sec:org44a975c}
+\begin{itemize}
+\item 工程文件: \textbf{PrjPcb}
+\item 元件库文件: \textbf{SchLib}
+\item 原理图文件: \textbf{SchDoc}
+\item PCB库文件: \textbf{PcbLib}
+\item 网络表文件: \textbf{NET}
+\item PCB文件: \textbf{PcbDoc}
+\end{itemize}
+\section{编辑元件属性}
+\label{sec:org4a8bc29}
+\begin{itemize}
+\item \uline{绘制元件库}
+\begin{itemize}
+\item 多个部分的元件需要add为元件添加新的部分
+\item 需要给model添加Footprint等描述
+\item 放管脚时注意有x的朝外
+\end{itemize}
+\item \uline{Designator:元件位号,元件的唯一表示}
+\begin{itemize}
+\item U?(IC),R?(电阻),C?(电容),J?(接口)\footnote{R:电阻,C:电容,RN:排阻,EC:电解电容,U:芯片,X:晶振,D:二极管,Q:三极管,J:跳线,LED:发光二极管,ZD:整流二极管,FB:磁珠}
+\end{itemize}
+\item 元件的移动
+\begin{itemize}
+\item 选择
+\begin{itemize}
+\item 单选: 鼠标左键
+\item 多选: shift+鼠标左键
+\end{itemize}
+\item 旋转
+\begin{itemize}
+\item 选中后按空格逆时针旋转
+\item Shift+空格顺时针旋转
+\item X or Y 根据X或Y进行镜像
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\section{原理图绘制}
+\label{sec:org4a515e5}
+\begin{itemize}
+\item \uline{设计方式}
+\begin{itemize}
+\item 自顶向下
+\begin{itemize}
+\item 将大模块逐步分解为小模块去设计
+\end{itemize}
+\item 自底向上
+\begin{itemize}
+\item 从底层开始设计逐步扩大最后完成
+\end{itemize}
+\end{itemize}
+\item 导线
+\begin{itemize}
+\item 命令 Place + Wire
+\item 功能:
+\begin{itemize}
+\item 连接电气元件
+\item 具有电气特性
+\end{itemize}
+\item 接地和电源
+\begin{itemize}
+\item 点击图标或者Place + Power Port
+\item 按住Tab可以配置属性
+\end{itemize}
+\end{itemize}
+\item 网络标号
+\begin{itemize}
+\item 表示多个具有电气意义的导线, 降低原理图复杂度
+\item Place + Net Label
+\item 同一个网络标号需要完全一致
+\item TAA (tools + annotation + annotation schematics)
+\begin{itemize}
+\item 可以对一个原理图的标号进行编辑和选择
+\end{itemize}
+\end{itemize}
+\item \uline{页连接符}
+\begin{itemize}
+\item 由于网络符号无法在多张图纸中连接,所以需要使用Port\footnote{端口}进行连接
+\item Place Port
+\item 其他作了解\footnote{Sheet Entry, Off Sheet Connector, Power Port}
+\end{itemize}
+\item \uline{总线}
+\begin{itemize}
+\item Place + Bus
+\item 表示具有相同电气意义的一组导线
+\item 总线以总线分支引出各条分导线，以网络标号做区分
+\begin{itemize}
+\item 总线分支 Place + Bus Entry(PU)
+\end{itemize}
+\end{itemize}
+\item No ERC
+\begin{itemize}
+\item x图标
+\item 可以忽略该管脚的错误，双击或者TAB可以修改检查属性
+\end{itemize}
+\item 辅助线
+\begin{itemize}
+\item 无电气意义, 用于区分电路的各个部分
+\item Place + Line(PDL)
+\end{itemize}
+\end{itemize}
+\section{原理图编译}
+\label{sec:org145728b}
+\begin{itemize}
+\item Project + compile PCB Project xxx.PrjPcb
+\item BOM
+\begin{itemize}
+\item 物料清单表
+\item Report + Bill of Materials(RI)
+\end{itemize}
+\end{itemize}
+\section{PCB封装创建}
+\label{sec:orgd5bcdd1}
+\begin{itemize}
+\item 向导法创建
+\begin{itemize}
+\item 通过对封装类型模板的选择比如DIP对称的封装 \footnote{穿孔,双列}
+\item 根据芯片手册填写焊盘参数,一般要比数据手册大一点, 内径，外径
+\item 焊盘间距参数:纵向e-2.54mm,横向E1-7.62mm
+\item finish
+\end{itemize}
+\end{itemize}
+\section{手工绘制PCB封装}
+\label{sec:orgbdc762d}
+\begin{itemize}
+\item 焊盘
+\begin{itemize}
+\item Place + Pad
+\item 设置形状 \footnote{表贴焊盘需要放在Top layer, 通孔放在Multi-Layer}
+\end{itemize}
+\item 过孔
+\begin{itemize}
+\item Place + via
+\end{itemize}
+\item 放置敷铜
+\begin{itemize}
+\item Place polygon place
+\end{itemize}
+\item 网表
+\begin{itemize}
+\item 网络连接和联系的表示
+\item 通过网表连接关系进行PCB的导入
+\item Design + Netlist for Project + Protel生成
+\end{itemize}
+\item \uline{固定孔}
+\begin{itemize}
+\item 3mm
+\item (5mm,5mm)
+\end{itemize}
+\end{itemize}
+\section{PCB布局}
+\label{sec:orgfde2e93}
+\begin{itemize}
+\item \uline{设置PCB板子大小}
+\begin{itemize}
+\item Q 切换grid(方格)单位 or View + grids + set global snap grids
+\item Place line (Keep out layer 或者 Mechanical layer)需要闭合
+\item Designer + Board shape + define from objects
+\end{itemize}
+\item 按照信号走向布局,以每个功能为核心布局
+\item PCB类
+\begin{itemize}
+\item 同一属性的网络或元件或差分放在一起构成一个类别,比如电源,GND,VCC
+\item 便与管理和编辑
+\item Design + Class 在大类的子类别中使用鼠标右键 add class
+\end{itemize}
+\item \uline{PCB 规则设置}
+\begin{itemize}
+\item Clearance 安全距离设计 可以选择规则适配范围\footnote{不同网络,相同网络,所有网络,不同差分}
+\item Track是走线 Hole是钻孔 TH Pad通孔焊盘Copper 铜皮
+\item enable 启用规则
+\item 不要勾选允许短路和开路
+\item 设置线宽规则
+\end{itemize}
+\end{itemize}
+\section{一些术语的作用}
+\label{sec:org046157c}
+\begin{itemize}
+\item 泪滴
+\begin{itemize}
+\item 避免电路板收到巨大外力冲撞时导线与焊盘接触点断开,是的更加美观
+\item 保护焊盘避免多次焊接时脱落
+\item 信号传输时平滑阻抗,降低急剧跳变
+\item tools + teardrops
+\end{itemize}
+\item 敷铜
+\begin{itemize}
+\item 增加载流面接和能力
+\item 减小底线阻抗,抗干扰
+\item 降低压降,提高电源效率
+\item 与地线连接,减少环路面积
+\item 对称敷铜可以对多层板起到平衡作用
+\end{itemize}
+\item DRC 检查设计是否满足规则
+\begin{itemize}
+\item 电源线与接地线要宽一些
+\end{itemize}
+\item 设置相对原点
+\begin{itemize}
+\item Edit + Origin + set
+\end{itemize}
+\item 尺寸标注
+\begin{itemize}
+\item Place + Dimension linear
+\item 便于设计者和生产者获取PCB尺寸以及相关信息
+\end{itemize}
+\end{itemize}
+\section{生产文件输出步骤 Gerber}
+\label{sec:orga2d081a}
+\begin{itemize}
+\item file + fabrication Outputs Gerber
+\item \uline{是一个所有电路设计软件都可以生产的模板文件,又叫做光绘文件}
+\item 单位:inches
+\item 比例:2:4
+\item 选择使用的层 Plot Layer used on
+\item 丝印层 (GTO\footnote{Gerber Top Overlayer}) 做标识
+\item GM1(机械标注层1) GKO(禁止布线层)
+\end{itemize}
+\end{document}
