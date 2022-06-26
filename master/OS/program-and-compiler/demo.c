@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include <stdio.h>
 #define REGES_FOREACH(_) _(X) _(Y)
 #define RUN_LOGIC X1 = !X && Y;\
@@ -13,7 +14,7 @@ int main() {
     RUN_LOGIC;
     REGES_FOREACH(PRINT);
     REGES_FOREACH(UPDATE);
-    putchar("\n");
+    putchar('\n');
     sleep(1);
   }
 }
