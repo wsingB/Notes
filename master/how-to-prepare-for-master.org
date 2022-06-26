@@ -1,0 +1,14 @@
+#+title: How To Prepare For Master
+
+/*Don't Pannic*/
+
+*** Professional Courses
+1) Operating System
+2) Algorithm
+3) Computer Organization
+4) Computer Network
+5) digit circuit, database
+*** Other
+1) English
+2) Math
+3) Political
